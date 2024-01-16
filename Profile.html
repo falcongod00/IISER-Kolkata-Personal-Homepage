@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Academic/Research Interests</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+
+/* Add this style to position the button container */
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    width: calc(100% - 20px);
+    bottom: 10px;
+    left: 10px; /* Adjusted left position to create space from the left */
+    z-index: 1; /* Ensure buttons are above the slideshow */
+}   
+
+/* Style the slideshow navigation buttons */
+.slideshow-button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.slideshow-button:hover {
+    background-color: #ddd;
+    color: #333;
+}
+
+#prevBtn::before {
+    content: '\2190'; /* Unicode arrow left character */
+}
+
+#nextBtn::before {
+    content: '\2192'; /* Unicode arrow right character */
+}
+
+
+#prevBtn,
+#nextBtn {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+#prevBtn:hover,
+#nextBtn:hover {
+    background-color: #ddd;
+    color: #333;
+}
+        * {
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+/* Style the top navigation bar */
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+
+/* Style the topnav links */
+.topnav a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change color on hover */
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+.footer, .push {
+    height: 120px; /* .push must be the same height as .footer */
+    background-color: #f1f1f1;
+    
+}
+        /* ... (existing styles for top navigation bar, header, and footer above) ... */
+
+        .content {
+            background-color: #ddd;
+            padding: 10px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .section {
+            flex: 1;
+            margin-bottom: 40px;
+        }
+
+        .section-heading {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .section-content {
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        .cv-section {
+            flex: 1;
+            margin-bottom: 40px;
+	    width: 100%;
+        }
+
+        .cv-section-heading {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+	    text-align: center;
+            /*display: none;  Hide the CV section heading on small screens */
+        }
+
+.cv-pdf-container {
+            width: 100%;
+            max-width: 800px; /* Adjust the maximum width as needed */
+            height: 500px; /* Adjust the height as needed */
+            margin: auto;
+        }
+
+.cv-pdf {
+            width: 100%;
+            height: 100%;
+            border: 1px solid #ddd; /* Add a border to the PDF container */
+        }
+
+ 
+
+        .images-section {
+            flex: 1;
+            margin-bottom: 40px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between; /* Distribute items evenly on larger screens */
+        }
+
+        .image-container {
+            width: 100%; /* Adjust the width as needed for two images side-by-side */
+            margin-bottom: 20px;
+        }
+
+        .image-container img {
+            width: 100%; /* Make the images responsive */
+            height: auto;
+        }
+
+        /* For smaller screens, show the CV section heading and adjust the PDF container height */
+        @media (max-width: 768px) {
+            .cv-pdf-container {
+                height: 300px; /* Adjust the height for smaller screens */
+            }
+
+            .cv-section-heading {
+                display: block; /* Show the CV section heading on small screens */
+            }
+        }
+
+
+        /* For smaller screens, stack the images on top of each other */
+        @media (max-width: 768px) {
+            .images-section {
+                flex-direction: column;
+            }
+
+            .image-container {
+                width: 100%;
+            }
+
+            .cv-section-heading {
+                display: block; /* Show the CV section heading on small screens */
+            }
+        }
+
+.slideshow-container {
+  max-width: 40%;
+  position: relative;
+  margin-left: 5px;
+  flex: 1 0 300px;
+  height: relative;
+  overflow: hidden;
+  margin-right: 10px;
+  margin-top:5px;
+  margin-bottom:20px;
+}
+
+.mySlides {
+  display: none;
+  height: 100%;
+  position: relative;
+}
+
+.mySlides img {
+            width: 100%; /* Make the images responsive */
+            height: 100%; /* Ensure the images fill the container */
+            object-fit: contain; /* Scale the images while maintaining aspect ratio */
+        }
+
+.slideshow{
+	flex: 1;
+        max-width: 100%;
+	height: 400px;
+	overflow: hidden; /* Hide any overflowing content */
+        display: flex; /* Display images in a row */
+        align-items: center; /* Center the images vertically */
+        justify-content: center; /* Center the images horizontally */
+}
+
+ @media (max-width: 768px) {
+            /* For smaller screens, move the text below the slideshow */
+            .content {
+                flex-direction: column-reverse;
+		align-items:center;
+            }
+	   .slideshow-container {
+                order: 1; 
+		max-width: 100%;
+		height: 300px;
+		margin: 0;
+            }
+		.slideshow-container,
+  .text {
+    width: 90%; /* Reduce the width to create some spacing on the sides */
+    margin: 0 auto; /* Center the elements */
+    text-align: center;
+  }
+
+.pdf-container {
+            max-width: 100%;
+            height: 500px;
+            display: none; /* Hide the PDF container initially */
+        }
+
+@media (min-width: 769px) {
+            .content {
+                flex-direction: row;
+            }
+
+            .slideshow-container {
+                max-width: 40%;
+                height: 410px;
+                margin-right: 5px; /* Add some spacing between the slideshow and text */
+            }
+
+            .section {
+                flex: 1;
+                margin-bottom: 40px;
+                max-width: 60%; /* Take 60% of the available width */
+            }
+        }
+
+    </style>
+
+<script>
+  let slideIndex = 0;
+
+  function showSlides() {
+    const slides = document.getElementsByClassName("mySlides");
+
+    for (let i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
+
+    const currentSlide = slides[slideIndex];
+    currentSlide.style.display = "block";
+
+    // Check if the current slide is a PDF container
+    const isPdfContainer = currentSlide.classList.contains("pdf-container");
+
+    // Get all PDF containers
+    const pdfContainers = document.getElementsByClassName("pdf-container");
+    for (let i = 0; i < pdfContainers.length; i++) {
+      const pdfContainer = pdfContainers[i];
+      // Show the PDF container only if it's the current slide's PDF or hide it otherwise
+      pdfContainer.style.display = pdfContainer === currentSlide && isPdfContainer ? "block" : "none";
+    }
+  }
+
+  function nextSlide() {
+    slideIndex++;
+    if (slideIndex >= document.getElementsByClassName("mySlides").length) {
+      slideIndex = 0;
+    }
+    showSlides();
+  }
+
+  function prevSlide() {
+    slideIndex--;
+    if (slideIndex < 0) {
+      slideIndex = document.getElementsByClassName("mySlides").length - 1;
+    }
+    showSlides();
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    showSlides();
+
+    // Add event listeners for manual control
+    document.getElementById("nextBtn").addEventListener("click", nextSlide);
+    document.getElementById("prevBtn").addEventListener("click", prevSlide);
+  });
+</script>
+</head>
+<body>
+
+<div class="topnav">
+    <a href="index.html">Home</a>
+    <a href="About.html">About</a>
+<!--    <a href="Teaching.html">Teaching</a>
+    <a href="extra.html">Extra-Curriculars</a>
+    <a href="Projects.html">Projects</a>
+    <a href="iiser.html">The IISER Repositories</a> -->
+    <a href='https://www.instagram.com/revival.iisers/?hl=en'>Revival 2021</a>
+  <a href='https://inquivesta.in'>Inquivesta X 2023</a>
+</div>
+
+<div class="header">
+    <h1>Dakshesh Vasan,</h1>
+    <h5>BS/MS 2018-23', Mathematical Sciences, from the Indian Institute of Science Education and Research, Kolkata
+        <br> Currently a PhD Student, Department of Statistics and Probability, Michigan State University</h5>
+</div>
+
+<div class="content">
+    <div class="section cv-section">
+        <h2 class="cv-section-heading">Curriculum Vitae (CV) [Last Updated: December 2023]</h2>
+	<div class="cv-pdf-container">
+            <iframe class="cv-pdf" src="Academics/DaksheshCV7-11.pdf" frameborder="0"></iframe>
+        </div>
+    </div>
+</div>
+
+<!--168377452 and 111623-->
+
+<div class="content">
+
+    <div class="section cv-section">
+        <h2 class="cv-section-heading">Research Interests - Primary</h2>
+        <p class="section-content">
+            <ul>
+
+<li><b><i>Probability Theory and Stochastic Processes</i></b>: I am interested in contemporary research with respect to tools and techniques to analyse stochastic processes. For my MS Project under the guidance of Dr. Anirvan Chakraborty; I studied <b>Prof. Robert J Adler's 'An Introduction to Continuity and Extrema of General Gaussian Processes'</b> where he introduces <i>entropy</i> and <i>majorising measures</i> in the context of generalizing the analysis of Gaussian processes. I also read <b>Prof. Manjunath Krishnapur</b>'s notes on Kahane's inequality and its corollaries.<br> I am interested in pursuing theoretical probability and analysis of stochastic processes. Specifically, topics like majorising measures, measure-indexed processes, and zero-one laws are topics I am keen on exploring.</li><br>
+
+<li><b><i>Extreme Value Statistics</b></i>: I took up Extreme Value Theory as an Independent Study with the guidance of Dr. Anirvan Chakraborty, owing to its immense relevance in contemporary research and it being on the interface of statistics and probability theory. The subject deals with the probabilistic and statistical analysis of extreme events and particularly revolves around the 'Fisher-Tippett-Gnedenko Theorem'. I read a few chapters and solved questions from "Extreme Value Theory: An Introduction" by Ana Ferreira and Lauren de Haan. </li><br>
+</ul></p>
+<h2 class="cv-section-heading">Research Interests (Other)</h2>
+<p class='section-content'>
+<ul>
+<li><b><i>World History, with an Indian perspective</i></b>: By nature of my childhood, I have been interested in several connections across culture, language, food, etc that I could identiy among different peoples. I want to know how far interactions, in terms of science, education, trade, philosophy, and spirituality; went between kingdoms and people from the east to the west and from the south to the north of India, with the middle east, Europe, Africa, China and South East Asia. Modern narratives are riddled with colonial and political impositions. As of now, my first step is to actively prevent my own biases, accept that I know nothing, and enable myself to think critically when coming across data. Next, I will seek to remove dependence on translations and try to get to historical sources on my own someday.</li></ul>
+
+    </div>
+
+	<div class="slideshow-container">
+    		<div class="mySlides fade pdf-container">
+        		<div class="numbertext"></div>
+        <iframe src="Academics/finalun.pdf" width="100%" height="100%" frameborder="0"></iframe>
+        <div class="text">MS project - 'Proabilistic Analysis of Stochastic Processes'
+		</div>
+    	</div>
+
+    <div class="mySlides fade pdf-container">
+        <div class="numbertext"></div>
+        <iframe src="Academics/DMSDay.pdf" width="100%" height="100%" frameborder="0"></iframe>
+        <div class="text">Extreme Value Theory Talk, DMS Day Symposium 2023</div>
+    </div>
+
+    <div class="mySlides fade pdf-container">
+        <div class="numbertext"></div>
+        <iframe src="Academics/MSProjectPresentationSem1.pdf" width="100%" height="100%" frameborder="0"></iframe>
+        <div class="text">MS project progress presentation Autumn 2022 - 'Proabilistic Analysis of Stochastic Processes'</div>
+    </div>
+
+    <div class="mySlides fade pdf-container">
+        <div class="numbertext"></div>
+        <iframe src="Academics/TheFinale.pdf" width="100%" height="100%" frameborder="0"></iframe>
+        <div class="text">MS project progress presentation Spring 2023 - 'Proabilistic Analysis of Stochastic Processes'</div>
+    </div>
+
+    <div class="mySlides fade pdf-container">
+        <div class="numbertext"></div>
+        <iframe src="Academics/CJ839FinalDakshesh.pdf" width="100%" height="100%" frameborder="0"></iframe>
+        <div class="text">CJ839 Project on India's Nuclear Story</div>
+    </div>
+
+</div>
+<!-- HTML Buttons for manual control -->
+<div class="button-container">
+    <button id="prevBtn" class="slideshow-button"></button>
+    <p> Click on these navigation buttons to go through some projects/presentations corresponding to my research interests. </p>
+    <button id="nextBtn" class="slideshow-button"></button>
+</div>
+
+      </div>
+        
+</div>
+
+    <div class="footer">
+        <p>#change<br> <br> Contact:<br> Personal Email ID: dakshesh2k@gmail.com || Work ID: dakshesh@msu.edu 
+<br>
+LinkedIn : <a href='https://ae.linkedin.com/in/dakshesh-vasan-261b97187'>https://ae.linkedin.com/in/dakshesh-vasan-261b97187</a><br>
+This page has been updated last in December 2023. 
+<br><br> 
+
+© 2023 Dakshesh Vasan's Personal Webpage. All rights reserved.</p>
+    </div>
+</body>
+</html>
+
